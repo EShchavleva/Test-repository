@@ -1,0 +1,14 @@
+﻿ЗапуститьПриложение("git init", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git config --local user.name 'Lena'", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git config --local user.email 'eschavleva@rambler.ru'", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git config --local core.quotepath false", ТекущийКаталог(), Истина);
+ПутьPrecommit1c = "D:\repo\precommit1c\";
+ПутьHooks = ТекущийКаталог() + "\.git\hooks\";
+КопироватьФайл(ПутьPrecommit1c + "pre-commit", ПутьHooks + "pre-commit");
+КопироватьФайл(ПутьPrecommit1c + "v8files-extractor.os", ПутьHooks + "v8files-extractor.os");
+ЗапуститьПриложение("xcopy " + ПутьPrecommit1c + "ibService " + ПутьHooks + "ibService /E /I", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("xcopy " + ПутьPrecommit1c + "tools " + ПутьHooks + "tools /E /I", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("xcopy " + ПутьPrecommit1c + "v8Reader " + ПутьHooks + "v8Reader /E /I", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git remote add vbootstrap https://github.com/silverbulleters/vanessa-bootstrap", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git -c diff.mnemonicprefix=false -c core.quotepath=false fetch vbootstrap", ТекущийКаталог(), Истина);
+ЗапуститьПриложение("git -c diff.mnemonicprefix=false -c core.quotepath=false pull vbootstrap master", ТекущийКаталог(), Истина);
